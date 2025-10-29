@@ -108,7 +108,17 @@ npm run dev
 
 Server akan berjalan di port 5000.
 
+## Konfigurasi Penting
+
+### Vite Configuration untuk Replit
+File `vite.config.js` sudah dikonfigurasi dengan benar untuk environment Replit:
+- `host: '0.0.0.0'` - Membuat server dapat diakses dari luar
+- `port: 5000` - Port standar Replit
+- `allowedHosts: true` - **PENTING**: Mengizinkan semua host untuk dynamic URL Replit
+- `hmr.clientPort: 5000` - Hot Module Replacement untuk development
+
 ## Recent Changes
 - 29 Oktober 2025: Initial setup aplikasi dengan semua fitur dasar
 - Implementasi deteksi bentrok jadwal otomatis
 - Perbaikan UI/UX sesuai requirement (status mencolok, tombol strategis, checkbox berubah, feedback)
+- Fix Vite configuration: Menambahkan `allowedHosts: true` untuk mengatasi host blocked error di Replit
