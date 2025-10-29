@@ -31,7 +31,7 @@ function Dashboard() {
   };
 
   const menuItems = [
-    { title: 'Kartu Mahasiswa', icon: CreditCard, path: '/kartu', color: '#ffb81f' },
+    { title: 'Kartu Mahasiswa', icon: CreditCard, path: '/kartu-mahasiswa', color: '#ffb81f' },
     { title: 'KRS', icon: BookOpen, path: '/status-validasi', color: '#15bb21' },
     { title: 'Pengisian KRS', icon: FileText, path: '/pengisian-krs', color: '#15bb21' },
     { title: 'KHS', icon: FileCheck, path: '/khs', color: '#7fc37e' },
