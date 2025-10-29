@@ -152,6 +152,15 @@ npm run dev
 
 Server akan berjalan di port 5000.
 
+## Dokumentasi
+Dokumentasi lengkap tersedia di `edlink-krs/README.md` yang mencakup:
+- 🎨 **Kustomisasi Color Palette** - Cara mengubah warna aplikasi
+- 🚀 **Setup Lokal** - Cara clone dan menjalankan di komputer lokal
+- 📁 **Struktur Proyek** - Penjelasan lengkap folder dan file
+- ➕ **Menambah Halaman Baru** - Step-by-step membuat halaman baru
+- 🌐 **Deployment** - Cara deploy ke berbagai platform
+- 🔧 **Kustomisasi Lainnya** - Tips dan tricks untuk customization
+
 ## Konfigurasi Penting
 
 ### Vite Configuration untuk Replit
@@ -179,3 +188,11 @@ File `vite.config.js` sudah dikonfigurasi dengan benar untuk environment Replit:
   - ✅ Responsive design: mobile-first dengan max-width 480px di desktop
   - ✅ Header hijau dengan profile info di semua halaman
   - ✅ Sticky bottom navigation dan sticky action buttons
+
+- **29 Oktober 2025 - Perbaikan Dashboard Card:**
+  - ✅ Menghapus semua ikon dari kartu informasi mahasiswa (NIM, Semester, IPK)
+  - ✅ Simplifikasi desain kartu dengan tampilan lebih clean dan minimal
+  - ✅ Menggunakan background abu-abu muda (#f8f9fa) untuk kartu stats
+  - ✅ Menghilangkan gradient dan efek shadow yang berlebihan
+  - ✅ Typography lebih sederhana dan mudah dibaca
+  - ✅ Dokumentasi lengkap dibuat di README.md
