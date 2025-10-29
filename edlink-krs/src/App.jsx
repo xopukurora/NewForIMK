@@ -8,6 +8,9 @@ import KartuMahasiswa from './pages/KartuMahasiswa';
 import KHS from './pages/KHS';
 import Nilai from './pages/Nilai';
 import Transkrip from './pages/Transkrip';
+import Kalender from './pages/Kalender';
+import Pengumuman from './pages/Pengumuman';
+import Akun from './pages/Akun';
 import ComingSoon from './pages/ComingSoon';
 import './index.css';
 
@@ -27,12 +30,16 @@ function App() {
         <Route path="/khs" element={<KHS />} />
         <Route path="/nilai" element={<Nilai />} />
         <Route path="/transkrip" element={<Transkrip />} />
+        <Route path="/kalender" element={<Kalender />} />
+        <Route path="/pengumuman" element={<Pengumuman />} />
+        <Route path="/akun" element={<Akun />} />
+
 
         {/* Coming Soon Pages */}
         <Route path="/jelajah" element={<ComingSoon title="Jelajah" />} />
         <Route path="/ruang-kelas" element={<ComingSoon title="Ruang Kelas" />} />
         <Route path="/obrolan" element={<ComingSoon title="Obrolan" />} />
-        <Route path="/akun" element={<ComingSoon title="Akun" />} />
+        {/* The original /akun route has been removed as it's now a dedicated page */}
 
 
         {/* Redirect unknown routes */}
