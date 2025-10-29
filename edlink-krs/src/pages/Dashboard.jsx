@@ -40,20 +40,12 @@ function Dashboard() {
   };
 
   const menuItems = [
-    { title: 'Presensi QR', icon: QrCode, path: '/presensi', color: '#7fc37e' },
     { title: 'Kartu Mahasiswa', icon: CreditCard, path: '/kartu', color: '#ffb81f' },
-    { title: 'Keuangan', icon: DollarSign, path: '/keuangan', color: '#15bb21' },
-    { title: 'KRS', icon: BookOpen, path: '/pengisian-krs', color: '#15bb21' },
-    { title: 'KHS', icon: FileText, path: '/khs', color: '#15bb21' },
-    { title: 'Nilai', icon: Award, path: '/nilai', color: '#15bb21' },
-    { title: 'Pengajuan Sesi', icon: Calendar, path: '/pengajuan-sesi', color: '#7fc37e' },
-    { title: 'Kampanye Belajar', icon: Target, path: '/kampanye', color: '#ffb81f' },
-    { title: 'Transkrip', icon: FileCheck, path: '/transkrip', color: '#222c6d' },
-    { title: 'Konsultasi Dosen', icon: Users, path: '/konsultasi', color: '#7fc37e' },
-    { title: 'Tugas Aktif', icon: ClipboardList, path: '/tugas', color: '#15bb21' },
-    { title: 'Data Akademik', icon: FolderOpen, path: '/data-akademik', color: '#ffb81f' },
-    { title: 'Akreditasi', icon: BadgeCheck, path: '/akreditasi', color: '#222c6d' },
-    { title: 'Akreditasi Prodi', icon: GraduationCap, path: '/akreditasi-prodi', color: '#222c6d' }
+    { title: 'KRS', icon: BookOpen, path: '/status-validasi', color: '#15bb21' },
+    { title: 'Pengisian KRS', icon: FileText, path: '/pengisian-krs', color: '#15bb21' },
+    { title: 'KHS', icon: FileCheck, path: '/khs', color: '#7fc37e' },
+    { title: 'Nilai', icon: Award, path: '/nilai', color: '#222c6d' },
+    { title: 'Transkrip', icon: GraduationCap, path: '/transkrip', color: '#222c6d' }
   ];
 
   return (
