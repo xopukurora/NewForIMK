@@ -152,8 +152,9 @@ function PengisianKRS() {
       <div key={course.id} className="krs-course-card">
         <div className="krs-course-header">
           <div className="krs-course-title">
-            <h3>{course.nama} ({course.kode})</h3>
-            <p className="krs-course-code">{course.kode} ({course.sks} SKS)</p>
+            <h3>{course.nama}</h3>
+            <p className="krs-course-code">{course.kode} • {course.sks} SKS</p>
+            <p className="krs-course-dosen">{course.dosen}</p>
           </div>
         </div>
 
@@ -172,20 +173,24 @@ function PengisianKRS() {
               >
                 <div className="krs-class-main">
                   <div className="krs-checkbox-wrapper">
-                    <input
-                      type="checkbox"
-                      checked={isThisSelected}
-                      onChange={() => {}}
-                      disabled={cannotSelect}
-                      className="krs-checkbox"
-                    />
+                    {isThisSelected ? (
+                      <CheckCircle2 size={24} className="krs-check-icon" />
+                    ) : (
+                      <input
+                        type="checkbox"
+                        checked={false}
+                        onChange={() => {}}
+                        disabled={cannotSelect}
+                        className="krs-checkbox"
+                      />
+                    )}
                   </div>
                   
                   <div className="krs-class-info">
                     <div className="krs-class-name">
-                      SKS {course.sks} • Kelas {kelas.id}, {kelas.hari} {kelas.waktu}
+                      Kelas {kelas.id} • {kelas.hari} {kelas.waktu}
                     </div>
-                    <div className="krs-class-meta">Semester 5</div>
+                    <div className="krs-class-meta">Ruang {kelas.ruang} • Semester 5</div>
                   </div>
                 </div>
 
@@ -221,10 +226,11 @@ function PengisianKRS() {
         {selectedCourses.map((course) => (
           <div key={`${course.courseId}-${course.kelasId}`} className="krs-saved-item">
             <div className="krs-saved-content">
-              <h3>{course.courseName} ({course.courseCode})</h3>
-              <p className="krs-saved-code">{course.courseCode} ({course.sks} SKS)</p>
+              <h3>{course.courseName}</h3>
+              <p className="krs-saved-code">{course.courseCode} • {course.sks} SKS</p>
+              <p className="krs-saved-dosen">{course.dosen}</p>
               <p className="krs-saved-schedule">
-                {course.hari}, {course.waktu}
+                Kelas {course.kelasId} • {course.hari}, {course.waktu}
               </p>
             </div>
             <button
