@@ -13,7 +13,7 @@ import {
   Filter,
   Trash2
 } from 'lucide-react';
-import { mataKuliahWajib, mataKuliahPilihan } from '../data/courses';
+import { semester1, semester2, semester3, semester4, mataKuliahWajib, mataKuliahPilihan, semester6 } from '../data/courses';
 import { checkConflict, isClassFull, getTotalSKS } from '../utils/scheduleHelper';
 import BottomNavigation from '../components/BottomNavigation';
 import '../styles/PengisianKRS.css';
@@ -133,11 +133,21 @@ function PengisianKRS() {
     );
   };
 
-  const allCourses = [...mataKuliahWajib, ...mataKuliahPilihan];
+  const allCourses = [...semester1, ...semester2, ...semester3, ...semester4, ...mataKuliahWajib, ...mataKuliahPilihan, ...semester6];
   const filteredCourses = allCourses.filter(course =>
     course.nama.toLowerCase().includes(searchQuery.toLowerCase()) ||
     course.kode.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // Group courses by semester
+  const groupedCourses = filteredCourses.reduce((acc, course) => {
+    const sem = course.semester;
+    if (!acc[sem]) {
+      acc[sem] = [];
+    }
+    acc[sem].push(course);
+    return acc;
+  }, {});
 
   const totalSKS = getTotalSKS(selectedCourses);
   const maxSKS = 24;
@@ -153,8 +163,8 @@ function PengisianKRS() {
         <div className="krs-course-header">
           <div className="krs-course-title">
             <h3>{course.nama}</h3>
-            <p className="krs-course-code">{course.kode} • {course.sks} SKS</p>
-            <p className="krs-course-dosen">{course.dosen}</p>
+            <p className="krs-course-code">{course.kode} • {course.sks} SKS • Semester {course.semester}</p>
+            <p className="krs-course-dosen">Dosen: {course.dosen}</p>
           </div>
         </div>
 
@@ -188,9 +198,9 @@ function PengisianKRS() {
                   
                   <div className="krs-class-info">
                     <div className="krs-class-name">
-                      Kelas {kelas.id} • {kelas.hari} {kelas.waktu}
+                      UNIT {kelas.id} • {kelas.hari} {kelas.waktu}
                     </div>
-                    <div className="krs-class-meta">Ruang {kelas.ruang} • Semester 5</div>
+                    <div className="krs-class-meta">Ruang {kelas.ruang} • Semester {course.semester}</div>
                   </div>
                 </div>
 
@@ -228,9 +238,9 @@ function PengisianKRS() {
             <div className="krs-saved-content">
               <h3>{course.courseName}</h3>
               <p className="krs-saved-code">{course.courseCode} • {course.sks} SKS</p>
-              <p className="krs-saved-dosen">{course.dosen}</p>
+              <p className="krs-saved-dosen">Dosen: {course.dosen}</p>
               <p className="krs-saved-schedule">
-                Kelas {course.kelasId} • {course.hari}, {course.waktu}
+                UNIT {course.kelasId} • {course.hari}, {course.waktu}
               </p>
             </div>
             <button
@@ -320,7 +330,12 @@ function PengisianKRS() {
           </div>
 
           <div className="krs-courses-content">
-            {filteredCourses.map((course) => renderCourseCard(course))}
+            {Object.keys(groupedCourses).sort((a, b) => a - b).map((semester) => (
+              <div key={semester} className="krs-semester-group">
+                <h2 className="krs-semester-title">Semester {semester}</h2>
+                {groupedCourses[semester].map((course) => renderCourseCard(course))}
+              </div>
+            ))}
           </div>
         </>
       )}
