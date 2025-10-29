@@ -182,19 +182,11 @@ function PengisianKRS() {
                 onClick={() => !cannotSelect && handleSelectClass(course, kelas)}
               >
                 <div className="krs-class-main">
-                  <div className="krs-checkbox-wrapper">
-                    {isThisSelected ? (
+                  {isThisSelected && (
+                    <div className="krs-checkbox-wrapper">
                       <CheckCircle2 size={24} className="krs-check-icon" />
-                    ) : (
-                      <input
-                        type="checkbox"
-                        checked={false}
-                        onChange={() => {}}
-                        disabled={cannotSelect}
-                        className="krs-checkbox"
-                      />
-                    )}
-                  </div>
+                    </div>
+                  )}
                   
                   <div className="krs-class-info">
                     <div className="krs-class-name">

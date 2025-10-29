@@ -290,15 +290,18 @@
   cursor: pointer;
   transition: all 0.2s;
   border: 2px solid transparent;
+  opacity: 0.6;
 }
 
 .krs-class-option:hover {
   background: #f5f5f5;
+  opacity: 0.8;
 }
 
 .krs-selected {
   background: #e3f2fd !important;
   border-color: #2196F3 !important;
+  opacity: 1 !important;
 }
 
 .krs-disabled {
@@ -316,17 +319,6 @@
   display: flex;
   align-items: center;
   margin-right: 1rem;
-}
-
-.krs-checkbox {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  accent-color: #2196F3;
-}
-
-.krs-checkbox:disabled {
-  cursor: not-allowed;
 }
 
 .krs-check-icon {
