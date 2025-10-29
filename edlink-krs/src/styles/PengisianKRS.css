@@ -318,17 +318,6 @@
   margin-right: 1rem;
 }
 
-.krs-checkbox {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  accent-color: #2196F3;
-}
-
-.krs-checkbox:disabled {
-  cursor: not-allowed;
-}
-
 .krs-check-icon {
   color: var(--malachite);
   min-width: 24px;
