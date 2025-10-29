@@ -29,14 +29,14 @@ function Dashboard() {
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     if (!isLoggedIn) {
-      navigate('/login');
+      navigate('/login', { replace: true });
     }
   }, [navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('username');
-    navigate('/login');
+    navigate('/login', { replace: true });
   };
 
   const menuItems = [

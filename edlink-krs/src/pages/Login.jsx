@@ -15,7 +15,7 @@ function Login() {
     if (username === 'mahasiswa' && password === 'kampus123') {
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('username', username);
-      navigate('/dashboard');
+      navigate('/dashboard', { replace: true });
     } else {
       setError('Username atau password salah!');
     }
