@@ -200,13 +200,15 @@ function PengisianKRS() {
                     <div className="krs-class-name">
                       UNIT {kelas.id} • {kelas.hari} {kelas.waktu}
                     </div>
-                    <div className="krs-class-meta">Ruang {kelas.ruang} • Semester {course.semester}</div>
+                    <div className="krs-class-meta">
+                      Ruang {kelas.ruang} • Mahasiswa: {kelas.terisi}/{kelas.kapasitas}
+                    </div>
                   </div>
                 </div>
 
                 <div className="krs-class-badges">
                   {isFull && (
-                    <span className="krs-badge krs-badge-full">Kelas penuh</span>
+                    <span className="krs-badge krs-badge-full">Kelas penuh ({kelas.terisi}/{kelas.kapasitas})</span>
                   )}
                   {hasConflict && !isThisSelected && (
                     <span className="krs-badge krs-badge-conflict">Jadwal bentrok</span>

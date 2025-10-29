@@ -350,7 +350,8 @@
 
 .krs-class-meta {
   font-size: 0.75rem;
-  color: #999;
+  color: #666;
+  font-weight: 500;
 }
 
 .krs-class-badges {
@@ -370,6 +371,8 @@
 .krs-badge-full {
   background: #ffebee;
   color: #c62828;
+  border: 1px solid #ef5350;
+  font-weight: 700;
 }
 
 .krs-badge-conflict {
