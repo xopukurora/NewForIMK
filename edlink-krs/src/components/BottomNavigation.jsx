@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Home, Compass, BookOpen, MessageCircle, User } from 'lucide-react';
+import { Home, Calendar, Bell, User } from 'lucide-react';
 import '../styles/BottomNavigation.css';
 
 function BottomNavigation() {
@@ -8,9 +8,8 @@ function BottomNavigation() {
 
   const navItems = [
     { id: 'home', label: 'Beranda', icon: Home, path: '/dashboard' },
-    { id: 'explore', label: 'Jelajah', icon: Compass, path: '/jelajah' },
-    { id: 'class', label: 'Ruang Kelas', icon: BookOpen, path: '/ruang-kelas' },
-    { id: 'chat', label: 'Obrolan', icon: MessageCircle, path: '/obrolan' },
+    { id: 'calendar', label: 'Kalender', icon: Calendar, path: '/kalender' },
+    { id: 'announcement', label: 'Pengumuman', icon: Bell, path: '/pengumuman' },
     { id: 'account', label: 'Akun', icon: User, path: '/akun' }
   ];
 
