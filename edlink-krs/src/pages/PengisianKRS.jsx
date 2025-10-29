@@ -152,8 +152,8 @@ function PengisianKRS() {
       <div key={course.id} className="krs-course-card">
         <div className="krs-course-header">
           <div className="krs-course-title">
-            <h3>{course.nama}</h3>
-            <p className="krs-course-code">{course.kode} • {course.sks} SKS</p>
+            <h3>{course.nama} ({course.kode})</h3>
+            <p className="krs-course-code">{course.kode} ({course.sks} SKS)</p>
           </div>
         </div>
 
@@ -183,24 +183,18 @@ function PengisianKRS() {
                   
                   <div className="krs-class-info">
                     <div className="krs-class-name">
-                      Kelas {kelas.id} • {kelas.hari}, {kelas.waktu}
+                      SKS {course.sks} • Kelas {kelas.id}, {kelas.hari} {kelas.waktu}
                     </div>
-                    <div className="krs-class-meta">
-                      {kelas.ruang} • {kelas.terisi}/{kelas.kapasitas} mahasiswa
-                    </div>
+                    <div className="krs-class-meta">Semester 5</div>
                   </div>
                 </div>
 
                 <div className="krs-class-badges">
                   {isFull && (
-                    <span className="krs-badge krs-badge-full">
-                      ● Kelas Penuh
-                    </span>
+                    <span className="krs-badge krs-badge-full">Kelas penuh</span>
                   )}
                   {hasConflict && !isThisSelected && (
-                    <span className="krs-badge krs-badge-conflict">
-                      ⚠ Bentrok Jadwal
-                    </span>
+                    <span className="krs-badge krs-badge-conflict">Jadwal bentrok</span>
                   )}
                 </div>
               </div>
@@ -216,27 +210,26 @@ function PengisianKRS() {
       return (
         <div className="krs-empty-state">
           <Info size={48} />
-          <h3>Belum Ada KRS Tersimpan</h3>
-          <p>Pilih mata kuliah dari tab "PILIH KELAS" untuk memulai penyusunan KRS Anda</p>
+          <h3>Belum ada KRS tersimpan</h3>
+          <p>Pilih mata kuliah dari tab "PILIH KELAS"</p>
         </div>
       );
     }
 
     return (
       <div className="krs-saved-list">
-        {selectedCourses.map((course, index) => (
+        {selectedCourses.map((course) => (
           <div key={`${course.courseId}-${course.kelasId}`} className="krs-saved-item">
             <div className="krs-saved-content">
-              <h3>{course.courseName}</h3>
-              <p className="krs-saved-code">{course.courseCode} • {course.sks} SKS • Kelas {course.kelasId}</p>
+              <h3>{course.courseName} ({course.courseCode})</h3>
+              <p className="krs-saved-code">{course.courseCode} ({course.sks} SKS)</p>
               <p className="krs-saved-schedule">
-                📅 {course.hari}, {course.waktu} • 📍 {course.ruang}
+                {course.hari}, {course.waktu}
               </p>
             </div>
             <button
               className="krs-remove-btn"
               onClick={() => handleRemoveCourse(course.courseId, course.kelasId)}
-              aria-label="Hapus mata kuliah"
             >
               <Trash2 size={20} />
             </button>
@@ -335,8 +328,8 @@ function PengisianKRS() {
       <div className="krs-bottom-bar">
         <div className="krs-bottom-info">
           <div className="krs-sks-info">
-            <span className="krs-sks-label">{selectedCourses.length} Mata Kuliah Dipilih</span>
-            <span className="krs-sks-value">{totalSKS} SKS dari {maxSKS} SKS (Tersisa {remainingSKS})</span>
+            <span className="krs-sks-label">{selectedCourses.length} Terpilih, {selectedCourses.length > 0 ? selectedCourses.length : 0} Tersimpan</span>
+            <span className="krs-sks-value">Tersisa {remainingSKS} SKS dari {maxSKS} SKS</span>
           </div>
         </div>
         <button 
@@ -344,7 +337,7 @@ function PengisianKRS() {
           onClick={handleSubmit}
           disabled={selectedCourses.length === 0}
         >
-          Ajukan
+          Simpan
         </button>
       </div>
 
