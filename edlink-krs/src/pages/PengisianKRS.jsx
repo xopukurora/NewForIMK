@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -7,7 +8,10 @@ import {
   CheckCircle2,
   Save,
   XCircle,
-  Info
+  Info,
+  Search,
+  Filter,
+  Trash2
 } from 'lucide-react';
 import { mataKuliahWajib, mataKuliahPilihan } from '../data/courses';
 import { checkConflict, isClassFull, getTotalSKS } from '../utils/scheduleHelper';
@@ -19,6 +23,9 @@ function PengisianKRS() {
   const [selectedCourses, setSelectedCourses] = useState([]);
   const [notification, setNotification] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [activeTab, setActiveTab] = useState('pilih'); // 'pilih' or 'tersimpan'
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showFilter, setShowFilter] = useState(false);
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -96,7 +103,15 @@ function PengisianKRS() {
         ...kelas
       }
     ]);
-    showNotification('Kelas berhasil ditambahkan ke KRS tersimpan!', 'success');
+    showNotification('Kelas berhasil ditambahkan!', 'success');
+  };
+
+  const handleRemoveCourse = (courseId, kelasId) => {
+    const newSelected = selectedCourses.filter(
+      (selected) => !(selected.courseId === courseId && selected.kelasId === kelasId)
+    );
+    setSelectedCourses(newSelected);
+    showNotification('Mata kuliah dihapus dari KRS', 'info');
   };
 
   const handleSave = () => {
@@ -118,23 +133,31 @@ function PengisianKRS() {
     );
   };
 
-  const renderCourseCard = (course, isMandatory) => {
+  const allCourses = [...mataKuliahWajib, ...mataKuliahPilihan];
+  const filteredCourses = allCourses.filter(course =>
+    course.nama.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    course.kode.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const totalSKS = getTotalSKS(selectedCourses);
+  const maxSKS = 24;
+  const remainingSKS = maxSKS - totalSKS;
+
+  const renderCourseCard = (course) => {
     const selectedClass = selectedCourses.find(
       (selected) => selected.courseId === course.id
     );
 
     return (
-      <div key={course.id} className="course-card">
-        <div className="course-header">
-          <div>
-            <h3>{course.nama}</h3>
-            <p className="course-code">{course.kode} - {course.sks} SKS</p>
-            <p className="course-lecturer">{course.dosen}</p>
+      <div key={course.id} className="krs-course-card">
+        <div className="krs-course-header">
+          <div className="krs-course-title">
+            <h3>{course.nama} ({course.kode})</h3>
+            <p className="krs-course-code">{course.kode} ({course.sks} SKS)</p>
           </div>
-          {isMandatory && <span className="badge-wajib">WAJIB</span>}
         </div>
 
-        <div className="class-list">
+        <div className="krs-class-options">
           {course.kelas.map((kelas) => {
             const isFull = isClassFull(kelas);
             const hasConflict = checkConflict(selectedCourses, kelas);
@@ -144,72 +167,74 @@ function PengisianKRS() {
             return (
               <div
                 key={kelas.id}
-                className={`class-item ${isThisSelected ? 'selected' : ''} ${cannotSelect ? 'disabled' : ''}`}
+                className={`krs-class-option ${isThisSelected ? 'krs-selected' : ''} ${cannotSelect ? 'krs-disabled' : ''}`}
+                onClick={() => !cannotSelect && handleSelectClass(course, kelas)}
               >
-                <div className="class-info">
-                  <div className="class-checkbox">
-                    {isThisSelected ? (
-                      <CheckCircle2 size={24} className="check-icon" />
-                    ) : (
-                      <input
-                        type="checkbox"
-                        checked={false}
-                        onChange={() => handleSelectClass(course, kelas)}
-                        disabled={cannotSelect}
-                      />
-                    )}
+                <div className="krs-class-main">
+                  <div className="krs-checkbox-wrapper">
+                    <input
+                      type="checkbox"
+                      checked={isThisSelected}
+                      onChange={() => {}}
+                      disabled={cannotSelect}
+                      className="krs-checkbox"
+                    />
                   </div>
-                  <div className="class-details">
-                    <div className="class-name">Kelas {kelas.id}</div>
-                    <div className="class-schedule">
-                      {kelas.hari}, {kelas.waktu}
+                  
+                  <div className="krs-class-info">
+                    <div className="krs-class-name">
+                      SKS {course.sks} • Kelas {kelas.id}, {kelas.hari} {kelas.waktu}
                     </div>
-                    <div className="class-room">Ruang: {kelas.ruang}</div>
+                    <div className="krs-class-meta">Semester 5</div>
                   </div>
                 </div>
 
-                <div className="class-status">
-                  <div className="capacity-info">
-                    <Users size={16} />
-                    <span>{kelas.terisi}/{kelas.kapasitas}</span>
-                  </div>
-
+                <div className="krs-class-badges">
                   {isFull && (
-                    <div className="status-badge status-full">
-                      <XCircle size={18} />
-                      <span>Kelas Penuh</span>
-                    </div>
+                    <span className="krs-badge krs-badge-full">Kelas penuh</span>
                   )}
-
                   {hasConflict && !isThisSelected && (
-                    <div className="status-badge status-conflict">
-                      <AlertTriangle size={18} />
-                      <span>Jadwal Bentrok</span>
-                    </div>
+                    <span className="krs-badge krs-badge-conflict">Jadwal bentrok</span>
                   )}
                 </div>
-
-                {!isThisSelected && !cannotSelect && (
-                  <button
-                    className="select-button"
-                    onClick={() => handleSelectClass(course, kelas)}
-                  >
-                    Pilih
-                  </button>
-                )}
-
-                {isThisSelected && (
-                  <button
-                    className="deselect-button"
-                    onClick={() => handleSelectClass(course, kelas)}
-                  >
-                    Batalkan
-                  </button>
-                )}
               </div>
             );
           })}
         </div>
+      </div>
+    );
+  };
+
+  const renderSavedCourses = () => {
+    if (selectedCourses.length === 0) {
+      return (
+        <div className="krs-empty-state">
+          <Info size={48} />
+          <h3>Belum ada KRS tersimpan</h3>
+          <p>Pilih mata kuliah dari tab "PILIH KELAS"</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="krs-saved-list">
+        {selectedCourses.map((course) => (
+          <div key={`${course.courseId}-${course.kelasId}`} className="krs-saved-item">
+            <div className="krs-saved-content">
+              <h3>{course.courseName} ({course.courseCode})</h3>
+              <p className="krs-saved-code">{course.courseCode} ({course.sks} SKS)</p>
+              <p className="krs-saved-schedule">
+                {course.hari}, {course.waktu}
+              </p>
+            </div>
+            <button
+              className="krs-remove-btn"
+              onClick={() => handleRemoveCourse(course.courseId, course.kelasId)}
+            >
+              <Trash2 size={20} />
+            </button>
+          </div>
+        ))}
       </div>
     );
   };
@@ -237,58 +262,82 @@ function PengisianKRS() {
         <button className="back-button" onClick={() => navigate('/dashboard')}>
           <ArrowLeft size={20} />
         </button>
-        <h1>Pengisian KRS</h1>
+        <h1>Kartu Rencana Studi</h1>
       </div>
 
-      <div className="krs-summary">
-        <div className="summary-card">
-          <h3>Total SKS</h3>
-          <div className="summary-value">{getTotalSKS(selectedCourses)}</div>
+      <div className="krs-info-bar">
+        <div className="krs-info-item">
+          <span className="krs-info-label">Semester</span>
+          <span className="krs-info-value">5</span>
         </div>
-        <div className="summary-card">
-          <h3>Mata Kuliah</h3>
-          <div className="summary-value">{selectedCourses.length}</div>
+        <div className="krs-info-item">
+          <span className="krs-info-label">Batas SKS</span>
+          <span className="krs-info-value">{maxSKS}</span>
         </div>
-        <div className="summary-card">
-          <h3>Batas SKS</h3>
-          <div className="summary-value">24</div>
+        <div className="krs-info-item">
+          <span className="krs-info-label">Periode Akademik</span>
+          <span className="krs-info-value">2025 Ganjil</span>
         </div>
       </div>
 
-      <div className="krs-content">
-        <section className="course-section">
-          <div className="section-header">
-            <h2>Mata Kuliah Wajib</h2>
-            <span className="badge-count">{mataKuliahWajib.length}</span>
-          </div>
-          <div className="course-list">
-            {mataKuliahWajib.map((course) => renderCourseCard(course, true))}
-          </div>
-        </section>
-
-        <section className="course-section">
-          <div className="section-header">
-            <h2>Mata Kuliah Pilihan</h2>
-            <span className="badge-count">{mataKuliahPilihan.length}</span>
-          </div>
-          <div className="course-list">
-            {mataKuliahPilihan.map((course) => renderCourseCard(course, false))}
-          </div>
-        </section>
-      </div>
-
-      <div className="krs-actions">
-        <button className="save-button" onClick={handleSave}>
-          <Save size={20} />
-          Simpan Draft
+      <div className="krs-tabs">
+        <button
+          className={`krs-tab ${activeTab === 'pilih' ? 'krs-tab-active' : ''}`}
+          onClick={() => setActiveTab('pilih')}
+        >
+          PILIH KELAS
         </button>
+        <button
+          className={`krs-tab ${activeTab === 'tersimpan' ? 'krs-tab-active' : ''}`}
+          onClick={() => setActiveTab('tersimpan')}
+        >
+          KRS TERSIMPAN
+          <span className="krs-tab-badge">{totalSKS} SKS</span>
+        </button>
+      </div>
+
+      {activeTab === 'pilih' && (
+        <>
+          <div className="krs-search-bar">
+            <div className="krs-search-input">
+              <Search size={20} />
+              <input
+                type="text"
+                placeholder="Cari mata kuliah..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+            <button className="krs-filter-btn" onClick={() => setShowFilter(!showFilter)}>
+              <Filter size={20} />
+            </button>
+          </div>
+
+          <div className="krs-courses-content">
+            {filteredCourses.map((course) => renderCourseCard(course))}
+          </div>
+        </>
+      )}
+
+      {activeTab === 'tersimpan' && (
+        <div className="krs-saved-content">
+          {renderSavedCourses()}
+        </div>
+      )}
+
+      <div className="krs-bottom-bar">
+        <div className="krs-bottom-info">
+          <div className="krs-sks-info">
+            <span className="krs-sks-label">{selectedCourses.length} Terpilih, {selectedCourses.length > 0 ? selectedCourses.length : 0} Tersimpan</span>
+            <span className="krs-sks-value">Tersisa {remainingSKS} SKS dari {maxSKS} SKS</span>
+          </div>
+        </div>
         <button 
-          className="submit-button" 
+          className="krs-submit-btn" 
           onClick={handleSubmit}
           disabled={selectedCourses.length === 0}
         >
-          <CheckCircle2 size={20} />
-          Ajukan Validasi
+          Simpan
         </button>
       </div>
 
