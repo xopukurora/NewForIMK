@@ -26,6 +26,7 @@ function PengisianKRS() {
   const [activeTab, setActiveTab] = useState('pilih'); // 'pilih' or 'tersimpan'
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilter, setShowFilter] = useState(false);
+  const [isAutoSelecting, setIsAutoSelecting] = useState(false);
 
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -125,6 +126,66 @@ function PengisianKRS() {
     localStorage.setItem('krsStatus', 'pending');
     localStorage.setItem('krsSubmittedAt', new Date().toISOString());
     navigate('/status-validasi');
+  };
+
+  const handleAutoSelect = () => {
+    setIsAutoSelecting(true);
+    
+    // Filter mata kuliah semester 5
+    const semester5Courses = [...mataKuliahWajib, ...mataKuliahPilihan].filter(
+      course => course.semester === 5
+    );
+    
+    let newSelections = [...selectedCourses];
+    let successCount = 0;
+    let failedCourses = [];
+    
+    semester5Courses.forEach(course => {
+      // Cek apakah mata kuliah sudah dipilih
+      const alreadySelected = newSelections.find(s => s.courseId === course.id);
+      if (alreadySelected) return;
+      
+      // Cari kelas yang tersedia (tidak penuh dan tidak bentrok)
+      let selectedClass = null;
+      
+      for (const kelas of course.kelas) {
+        const isFull = isClassFull(kelas);
+        const hasConflict = checkConflict(newSelections, kelas);
+        
+        if (!isFull && !hasConflict) {
+          selectedClass = kelas;
+          break;
+        }
+      }
+      
+      if (selectedClass) {
+        newSelections.push({
+          courseId: course.id,
+          kelasId: selectedClass.id,
+          courseName: course.nama,
+          courseCode: course.kode,
+          sks: course.sks,
+          dosen: course.dosen,
+          ...selectedClass
+        });
+        successCount++;
+      } else {
+        failedCourses.push(course.nama);
+      }
+    });
+    
+    setSelectedCourses(newSelections);
+    setIsAutoSelecting(false);
+    
+    if (successCount > 0) {
+      let message = `Berhasil memilih ${successCount} mata kuliah semester 5 secara otomatis!`;
+      if (failedCourses.length > 0) {
+        message += ` ${failedCourses.length} mata kuliah tidak dapat dipilih (penuh/bentrok).`;
+      }
+      showNotification(message, 'success');
+    } else {
+      showNotification('Tidak ada mata kuliah semester 5 yang dapat dipilih otomatis.', 'error');
+    }
   };
 
   const isSelected = (courseId, kelasId) => {
@@ -326,6 +387,14 @@ function PengisianKRS() {
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
+            <button 
+              className="krs-auto-select-btn" 
+              onClick={handleAutoSelect}
+              disabled={isAutoSelecting}
+            >
+              <CheckCircle2 size={18} />
+              <span>{isAutoSelecting ? 'Memilih...' : 'Pilih Otomatis'}</span>
+            </button>
             <button className="krs-filter-btn" onClick={() => setShowFilter(!showFilter)}>
               <Filter size={20} />
             </button>
