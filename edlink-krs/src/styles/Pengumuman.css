@@ -6,7 +6,7 @@
 }
 
 .pengumuman-header {
-  background: linear-gradient(135deg, #15bb21 0%, #058204 100%);
+  background: linear-gradient(135deg, var(--malachite) 0%, var(--japanese-laurel) 100%);
   color: white;
   padding: 1rem;
   display: flex;
@@ -24,7 +24,7 @@
 .filter-section {
   padding: 1rem;
   background: white;
-  border-bottom: 1px solid #e6efe9;
+  border-bottom: 1px solid var(--gin);
 }
 
 .filter-chips {
@@ -39,7 +39,7 @@
 }
 
 .filter-chips::-webkit-scrollbar-thumb {
-  background: #e6efe9;
+  background: var(--gin);
   border-radius: 4px;
 }
 
@@ -48,25 +48,25 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border: 2px solid #e6efe9;
+  border: 2px solid var(--gin);
   background: white;
   border-radius: 24px;
   font-size: 0.85rem;
   font-weight: 500;
-  color: #8798a4;
+  color: var(--regent-gray);
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
 }
 
 .filter-chip:hover {
-  border-color: #15bb21;
-  color: #15bb21;
+  border-color: var(--malachite);
+  color: var(--malachite);
 }
 
 .filter-chip.active {
-  background: #15bb21;
-  border-color: #15bb21;
+  background: var(--malachite);
+  border-color: var(--malachite);
   color: white;
 }
 
@@ -99,7 +99,7 @@
   position: absolute;
   top: -8px;
   right: 1rem;
-  background: #ffb81f;
+  background: var(--my-sin);
   color: white;
   padding: 0.35rem 0.75rem;
   border-radius: 12px;
@@ -132,7 +132,7 @@
   display: flex;
   gap: 0.5rem;
   font-size: 0.75rem;
-  color: #8798a4;
+  color: var(--regent-gray);
 }
 
 .announcement-date {
@@ -145,7 +145,7 @@
 
 .announcement-title {
   font-size: 1.1rem;
-  color: #1f272b;
+  color: var(--shark);
   margin: 0 0 0.75rem 0;
   font-weight: 600;
   line-height: 1.4;
@@ -163,20 +163,20 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 0.75rem;
-  border-top: 1px solid #e6efe9;
+  border-top: 1px solid var(--gin);
 }
 
 .announcement-author {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #8798a4;
+  color: var(--regent-gray);
   font-size: 0.8rem;
   font-weight: 500;
 }
 
 .announcement-author svg {
-  color: #15bb21;
+  color: var(--malachite);
 }
 
 .announcement-tags {
@@ -186,7 +186,7 @@
 }
 
 .tag {
-  color: #15bb21;
+  color: var(--malachite);
   font-size: 0.75rem;
   font-weight: 500;
 }

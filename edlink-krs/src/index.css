@@ -1,4 +1,5 @@
-:root {
+
+/* :root {
   --malachite: #15bb21;
   --japanese-laurel: #058204;
   --astronaut: #222c6d;
@@ -8,6 +9,17 @@
   --regent-gray: #8798a4;
   --shark: #1f272b;
   --colonial-white: #ffebbe;
+} */
+:root {
+  --malachite: #26A69A;        /* Teal utama */
+  --japanese-laurel: #00796B;  /* Teal gelap */
+  --astronaut: #0097A7;        /* Cyan */
+  --my-sin: #FFA726;           /* Orange hangat */
+  --gin: #E0F2F1;              /* Teal sangat muda */
+  --de-york: #4DB6AC;          /* Teal soft */
+  --regent-gray: #78909C;      /* Abu-abu biru */
+  --shark: #263238;            /* Hitam kehijauan */
+  --colonial-white: #B2DFDB;   /* Teal muda */
 }
 
 * {

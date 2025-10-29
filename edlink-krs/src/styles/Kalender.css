@@ -6,7 +6,7 @@
 }
 
 .kalender-header {
-  background: linear-gradient(135deg, #15bb21 0%, #058204 100%);
+  background: linear-gradient(135deg, var(--malachite) 0%, var(--japanese-laurel) 100%);
   color: white;
   padding: 1rem;
   display: flex;
@@ -38,13 +38,13 @@
 
 .month-navigation h2 {
   font-size: 1.1rem;
-  color: #1f272b;
+  color: var(--shark);
   margin: 0;
   font-weight: 600;
 }
 
 .nav-btn {
-  background: #e6efe9;
+  background: var(--gin);
   border: none;
   width: 36px;
   height: 36px;
@@ -54,11 +54,11 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s;
-  color: #15bb21;
+  color: var(--malachite);
 }
 
 .nav-btn:hover {
-  background: #15bb21;
+  background: var(--malachite);
   color: white;
 }
 
@@ -72,7 +72,7 @@
   text-align: center;
   font-size: 0.75rem;
   font-weight: 600;
-  color: #8798a4;
+  color: var(--regent-gray);
   padding: 0.5rem 0;
   text-transform: uppercase;
 }
@@ -91,7 +91,7 @@
 }
 
 .calendar-day:hover:not(.empty) {
-  background: #e6efe9;
+  background: var(--gin);
 }
 
 .calendar-day.empty {
@@ -99,12 +99,12 @@
 }
 
 .calendar-day.today {
-  background: #e6efe9;
+  background: var(--gin);
   font-weight: 700;
 }
 
 .calendar-day.selected {
-  background: #15bb21;
+  background: var(--malachite);
   color: white;
 }
 
@@ -114,14 +114,14 @@
 
 .day-number {
   font-size: 0.9rem;
-  color: #1f272b;
+  color: var(--shark);
   font-weight: 500;
 }
 
 .event-indicator {
   width: 5px;
   height: 5px;
-  background: #ffb81f;
+  background: var(--my-sin);
   border-radius: 50%;
   position: absolute;
   bottom: 6px;
@@ -144,12 +144,12 @@
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1rem;
-  color: #15bb21;
+  color: var(--malachite);
 }
 
 .events-header h3 {
   font-size: 1rem;
-  color: #1f272b;
+  color: var(--shark);
   margin: 0;
   font-weight: 600;
 }
@@ -164,7 +164,7 @@
   background: #f8f9fa;
   padding: 1rem;
   border-radius: 12px;
-  border-left: 4px solid #15bb21;
+  border-left: 4px solid var(--malachite);
   transition: all 0.2s;
 }
 
@@ -187,7 +187,7 @@
 
 .event-title {
   font-size: 1rem;
-  color: #1f272b;
+  color: var(--shark);
   margin: 0.5rem 0;
   font-weight: 600;
 }
@@ -203,19 +203,19 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #8798a4;
+  color: var(--regent-gray);
   font-size: 0.85rem;
 }
 
 .event-detail svg {
-  color: #15bb21;
+  color: var(--malachite);
   flex-shrink: 0;
 }
 
 .no-events {
   text-align: center;
   padding: 3rem 1rem;
-  color: #8798a4;
+  color: var(--regent-gray);
 }
 
 .no-events svg {
