@@ -1,0 +1,131 @@
+
+.transkrip-container {
+  min-height: 100vh;
+  background: var(--gin);
+  padding-bottom: 80px;
+}
+
+.transkrip-header {
+  background: var(--malachite);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.transkrip-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.student-info-card {
+  background: white;
+  margin: 0 1rem 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.student-info-card h3 {
+  font-size: 1rem;
+  margin: 0 0 1rem 0;
+  color: var(--shark);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.info-label {
+  font-size: 0.7rem;
+  color: var(--regent-gray);
+  text-transform: uppercase;
+}
+
+.info-value {
+  font-size: 0.85rem;
+  color: var(--shark);
+  font-weight: 600;
+}
+
+.transkrip-content {
+  background: white;
+  margin: 0 1rem 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.content-header h3 {
+  font-size: 1rem;
+  margin: 0;
+  color: var(--shark);
+}
+
+.transkrip-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 70px 1fr 50px 60px;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: var(--malachite);
+  color: white;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 70px 1fr 50px 60px;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: var(--gin);
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+.col-kode {
+  font-weight: 600;
+  color: var(--shark);
+}
+
+.col-nama {
+  color: var(--shark);
+}
+
+.col-sks {
+  text-align: center;
+  color: var(--regent-gray);
+}
+
+.col-nilai {
+  text-align: center;
+  font-weight: 700;
+  color: var(--malachite);
+}

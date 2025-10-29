@@ -1,0 +1,168 @@
+
+.kartu-container {
+  min-height: 100vh;
+  background: var(--gin);
+  padding-bottom: 80px;
+}
+
+.kartu-header {
+  background: var(--malachite);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.kartu-content {
+  padding: 1rem;
+}
+
+.student-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.card-top {
+  background: linear-gradient(135deg, var(--malachite) 0%, var(--de-york) 100%);
+  color: white;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.university-logo {
+  background: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: var(--malachite);
+}
+
+.university-name h2 {
+  font-size: 1rem;
+  margin: 0 0 0.25rem 0;
+  font-weight: 700;
+}
+
+.university-name p {
+  font-size: 0.75rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.card-body {
+  padding: 1.5rem 1rem;
+}
+
+.student-photo {
+  background: var(--gin);
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: var(--regent-gray);
+}
+
+.student-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.detail-item svg {
+  color: var(--malachite);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.detail-item > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detail-label {
+  font-size: 0.7rem;
+  color: var(--regent-gray);
+  text-transform: uppercase;
+}
+
+.detail-value {
+  font-size: 0.9rem;
+  color: var(--shark);
+  font-weight: 600;
+}
+
+.card-qr {
+  background: var(--gin);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.qr-placeholder {
+  background: white;
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.5rem;
+  color: var(--regent-gray);
+}
+
+.qr-label {
+  font-size: 0.75rem;
+  color: var(--regent-gray);
+  margin: 0;
+}
+
+.contact-info {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.contact-info h3 {
+  font-size: 1rem;
+  margin: 0 0 1rem 0;
+  color: var(--shark);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--gin);
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--shark);
+}
+
+.contact-item:last-child {
+  margin-bottom: 0;
+}
+
+.contact-item svg {
+  color: var(--malachite);
+}
