@@ -21,36 +21,35 @@
 }
 
 .student-info-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-  border-radius: 16px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   margin-bottom: 1rem;
-  border: 1px solid rgba(21, 187, 33, 0.1);
+  border: 1px solid #e9ecef;
 }
 
 .card-header-section {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 2px solid #e6efe9;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e9ecef;
 }
 
 .profile-avatar {
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--malachite) 0%, var(--japanese-laurel) 100%);
+  background: var(--malachite);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: white;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(21, 187, 33, 0.3);
 }
 
 .profile-text {
@@ -59,18 +58,17 @@
 }
 
 .profile-text h2 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin: 0 0 0.35rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
   color: var(--shark);
-  letter-spacing: -0.3px;
 }
 
 .profile-text p {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   margin: 0;
-  color: #666;
-  font-weight: 500;
+  color: #6c757d;
+  font-weight: 400;
 }
 
 .student-stats {
@@ -80,69 +78,37 @@
 }
 
 .stat-card {
-  background: white;
-  border-radius: 12px;
-  padding: 1rem 0.75rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 0.875rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s;
-}
-
-.stat-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.stat-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: white;
-}
-
-.nim-icon {
-  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
-  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
-}
-
-.semester-icon {
-  background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
-  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.3);
-}
-
-.ipk-icon {
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+  border: 1px solid #e9ecef;
 }
 
 .stat-info {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.35rem;
   text-align: center;
+  width: 100%;
 }
 
 .stat-label {
   font-size: 0.7rem;
-  color: #999;
-  font-weight: 600;
+  color: #6c757d;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
 }
 
 .stat-value {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--shark);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .header-actions {

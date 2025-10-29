@@ -67,9 +67,6 @@ function Dashboard() {
           
           <div className="student-stats">
             <div className="stat-card">
-              <div className="stat-icon nim-icon">
-                <span>#</span>
-              </div>
               <div className="stat-info">
                 <span className="stat-label">NIM</span>
                 <span className="stat-value">2021010123</span>
@@ -77,9 +74,6 @@ function Dashboard() {
             </div>
             
             <div className="stat-card">
-              <div className="stat-icon semester-icon">
-                <span>S</span>
-              </div>
               <div className="stat-info">
                 <span className="stat-label">Semester</span>
                 <span className="stat-value">5</span>
@@ -87,9 +81,6 @@ function Dashboard() {
             </div>
             
             <div className="stat-card">
-              <div className="stat-icon ipk-icon">
-                <span>★</span>
-              </div>
               <div className="stat-info">
                 <span className="stat-label">IPK</span>
                 <span className="stat-value">3.75</span>
