@@ -24,19 +24,10 @@ import '../styles/Dashboard.css';
 
 function Dashboard() {
   const navigate = useNavigate();
-  const username = localStorage.getItem('username') || 'Mahasiswa';
-
-  useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    if (!isLoggedIn) {
-      navigate('/login', { replace: true });
-    }
-  }, [navigate]);
+  const username = 'Mahasiswa';
 
   const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('username');
-    navigate('/login', { replace: true });
+    navigate('/', { replace: true });
   };
 
   const menuItems = [
