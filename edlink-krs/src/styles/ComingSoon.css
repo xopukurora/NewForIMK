@@ -1,0 +1,47 @@
+.coming-soon-container {
+  min-height: 100vh;
+  background: var(--gin);
+  padding-bottom: 80px;
+}
+
+.coming-soon-header {
+  background: var(--malachite);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.coming-soon-header h1 {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.coming-soon-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.construction-icon {
+  color: var(--regent-gray);
+  margin-bottom: 1.5rem;
+}
+
+.coming-soon-content h2 {
+  font-size: 1.75rem;
+  color: var(--shark);
+  margin: 0 0 1rem 0;
+}
+
+.coming-soon-content p {
+  color: var(--regent-gray);
+  font-size: 1rem;
+  margin: 0;
+}

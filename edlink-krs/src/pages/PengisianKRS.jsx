@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { mataKuliahWajib, mataKuliahPilihan } from '../data/courses';
 import { checkConflict, isClassFull, getTotalSKS } from '../utils/scheduleHelper';
+import BottomNavigation from '../components/BottomNavigation';
 import '../styles/PengisianKRS.css';
 
 function PengisianKRS() {
@@ -235,23 +236,22 @@ function PengisianKRS() {
       <div className="krs-header">
         <button className="back-button" onClick={() => navigate('/dashboard')}>
           <ArrowLeft size={20} />
-          Kembali
         </button>
-        <h1>Pengisian Kartu Rencana Studi (KRS)</h1>
+        <h1>Pengisian KRS</h1>
       </div>
 
       <div className="krs-summary">
         <div className="summary-card">
-          <h3>Total SKS Terpilih</h3>
+          <h3>Total SKS</h3>
           <div className="summary-value">{getTotalSKS(selectedCourses)}</div>
         </div>
         <div className="summary-card">
-          <h3>Mata Kuliah Terpilih</h3>
+          <h3>Mata Kuliah</h3>
           <div className="summary-value">{selectedCourses.length}</div>
         </div>
         <div className="summary-card">
           <h3>Batas SKS</h3>
-          <div className="summary-value">24 SKS</div>
+          <div className="summary-value">24</div>
         </div>
       </div>
 
@@ -259,7 +259,7 @@ function PengisianKRS() {
         <section className="course-section">
           <div className="section-header">
             <h2>Mata Kuliah Wajib</h2>
-            <span className="badge-count">{mataKuliahWajib.length} mata kuliah</span>
+            <span className="badge-count">{mataKuliahWajib.length}</span>
           </div>
           <div className="course-list">
             {mataKuliahWajib.map((course) => renderCourseCard(course, true))}
@@ -269,7 +269,7 @@ function PengisianKRS() {
         <section className="course-section">
           <div className="section-header">
             <h2>Mata Kuliah Pilihan</h2>
-            <span className="badge-count">{mataKuliahPilihan.length} mata kuliah</span>
+            <span className="badge-count">{mataKuliahPilihan.length}</span>
           </div>
           <div className="course-list">
             {mataKuliahPilihan.map((course) => renderCourseCard(course, false))}
@@ -288,9 +288,11 @@ function PengisianKRS() {
           disabled={selectedCourses.length === 0}
         >
           <CheckCircle2 size={20} />
-          Ajukan KRS untuk Validasi
+          Ajukan Validasi
         </button>
       </div>
+
+      <BottomNavigation />
     </div>
   );
 }

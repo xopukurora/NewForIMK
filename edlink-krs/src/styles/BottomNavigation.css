@@ -1,0 +1,60 @@
+.bottom-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: all 0.3s;
+  flex: 1;
+}
+
+.nav-icon {
+  color: var(--regent-gray);
+  transition: color 0.3s;
+}
+
+.nav-label {
+  font-size: 0.7rem;
+  color: var(--regent-gray);
+  transition: color 0.3s;
+}
+
+.nav-item.active .nav-icon {
+  color: var(--malachite);
+}
+
+.nav-item.active .nav-label {
+  color: var(--malachite);
+  font-weight: 600;
+}
+
+.nav-item:hover .nav-icon,
+.nav-item:hover .nav-label {
+  color: var(--de-york);
+}
+
+@media (min-width: 769px) {
+  .bottom-navigation {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

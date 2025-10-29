@@ -1,123 +1,166 @@
-.dashboard-container {
+.dashboard-mobile {
   min-height: 100vh;
-  background: #f5f7fa;
+  background: var(--gin);
+  padding-bottom: 80px;
 }
 
-.dashboard-navbar {
-  background: white;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+.dashboard-header {
+  background: var(--malachite);
+  color: white;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-brand {
+.profile-section {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  color: #667eea;
-  font-size: 1.5rem;
+  flex: 1;
+}
+
+.profile-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--malachite);
+  flex-shrink: 0;
 }
 
-.navbar-user {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  color: #333;
+.profile-info {
+  flex: 1;
+  min-width: 0;
 }
 
-.logout-button {
+.profile-info h2 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-info p {
+  font-size: 0.75rem;
+  margin: 0.15rem 0 0 0;
+  opacity: 0.9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-actions {
   display: flex;
-  align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: #f44336;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background 0.3s;
 }
 
-.logout-button:hover {
-  background: #d32f2f;
+.icon-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+  color: white;
+}
+
+.icon-button:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .dashboard-content {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 1rem;
 }
 
-.welcome-section {
-  text-align: center;
-  margin-bottom: 3rem;
+.academic-section {
+  margin-bottom: 2rem;
 }
 
-.welcome-section h1 {
-  font-size: 2.5rem;
-  color: #333;
-  margin: 0 0 0.5rem 0;
-}
-
-.welcome-section p {
-  font-size: 1.2rem;
-  color: #666;
-  margin: 0;
+.section-title {
+  font-size: 1rem;
+  color: var(--shark);
+  margin: 0 0 1rem 0;
+  font-weight: 600;
 }
 
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
 }
 
-.menu-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
 }
 
-.menu-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-.menu-card-blue {
-  border-top: 4px solid #2196F3;
-}
-
-.menu-card-green {
-  border-top: 4px solid #4CAF50;
-}
-
-.menu-card-orange {
-  border-top: 4px solid #FF9800;
-}
-
-.menu-card-purple {
-  border-top: 4px solid #9C27B0;
+.menu-item:active {
+  transform: scale(0.95);
 }
 
 .menu-icon {
-  color: #667eea;
-  margin-bottom: 1rem;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.menu-card h3 {
-  font-size: 1.5rem;
-  color: #333;
-  margin: 0 0 0.5rem 0;
+.menu-item:hover .menu-icon {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.menu-card p {
-  color: #666;
-  margin: 0;
-  font-size: 0.95rem;
+.menu-title {
+  font-size: 0.7rem;
+  color: var(--shark);
+  text-align: center;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+@media (max-width: 380px) {
+  .menu-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .profile-info h2 {
+    font-size: 0.85rem;
+  }
+  
+  .profile-info p {
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .dashboard-mobile {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  
+  .dashboard-header {
+    max-width: 480px;
+    margin: 0 auto;
+  }
 }

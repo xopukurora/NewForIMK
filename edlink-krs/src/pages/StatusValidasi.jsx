@@ -10,6 +10,7 @@ import {
   User,
   BookOpen
 } from 'lucide-react';
+import BottomNavigation from '../components/BottomNavigation';
 import '../styles/StatusValidasi.css';
 
 function StatusValidasi() {
@@ -89,7 +90,6 @@ function StatusValidasi() {
       <div className="status-header">
         <button className="back-button" onClick={() => navigate('/dashboard')}>
           <ArrowLeft size={20} />
-          Kembali
         </button>
         <h1>Status Validasi KRS</h1>
       </div>
@@ -101,15 +101,12 @@ function StatusValidasi() {
           <p>{statusInfo.description}</p>
           {submittedAt && (
             <div className="submitted-info">
-              <Calendar size={16} />
+              <Calendar size={14} />
               <span>
-                Diajukan pada: {submittedAt.toLocaleDateString('id-ID', {
-                  weekday: 'long',
-                  year: 'numeric',
-                  month: 'long',
+                {submittedAt.toLocaleDateString('id-ID', {
                   day: 'numeric',
-                  hour: '2-digit',
-                  minute: '2-digit'
+                  month: 'short',
+                  year: 'numeric'
                 })}
               </span>
             </div>
@@ -118,7 +115,7 @@ function StatusValidasi() {
       </div>
 
       <div className="status-message">
-        <AlertCircle size={20} />
+        <AlertCircle size={18} />
         <p>{statusInfo.message}</p>
       </div>
 
@@ -144,48 +141,33 @@ function StatusValidasi() {
 
       {selectedCourses.length > 0 && (
         <div className="selected-courses-section">
-          <h2>Daftar Mata Kuliah Terpilih</h2>
-          <div className="courses-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Kode</th>
-                  <th>Mata Kuliah</th>
-                  <th>Kelas</th>
-                  <th>SKS</th>
-                  <th>Jadwal</th>
-                  <th>Ruang</th>
-                  <th>Dosen</th>
-                </tr>
-              </thead>
-              <tbody>
-                {selectedCourses.map((course, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{course.courseCode}</td>
-                    <td>{course.courseName}</td>
-                    <td>{course.kelasId}</td>
-                    <td>{course.sks}</td>
-                    <td>{course.hari}, {course.waktu}</td>
-                    <td>{course.ruang}</td>
-                    <td>{course.dosen}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <h2>Daftar Mata Kuliah</h2>
+          <div className="courses-list">
+            {selectedCourses.map((course, index) => (
+              <div key={index} className="course-item">
+                <div className="course-number">{index + 1}</div>
+                <div className="course-info">
+                  <div className="course-name">{course.courseName}</div>
+                  <div className="course-details">
+                    {course.courseCode} • Kelas {course.kelasId} • {course.sks} SKS
+                  </div>
+                  <div className="course-schedule">
+                    {course.hari}, {course.waktu} • {course.ruang}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
 
       <div className="dosen-wali-info">
-        <h3>Informasi Dosen Wali</h3>
+        <h3>Dosen Wali</h3>
         <div className="dosen-card">
-          <User size={32} />
+          <User size={28} />
           <div>
             <div className="dosen-name">Dr. Bambang Sutejo, M.Kom</div>
-            <div className="dosen-contact">Email: bambang.sutejo@university.ac.id</div>
-            <div className="dosen-contact">Ruang: Gedung A, Lantai 3, Ruang 301</div>
+            <div className="dosen-contact">Gedung A, Lantai 3, Ruang 301</div>
           </div>
         </div>
       </div>
@@ -193,7 +175,7 @@ function StatusValidasi() {
       {status === 'pending' && (
         <div className="demo-section">
           <button className="demo-button" onClick={simulateApproval}>
-            [DEMO] Simulasi Persetujuan Dosen
+            Demo: Simulasi Persetujuan
           </button>
         </div>
       )}
@@ -211,6 +193,8 @@ function StatusValidasi() {
           </button>
         </div>
       )}
+
+      <BottomNavigation />
     </div>
   );
 }

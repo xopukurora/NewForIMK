@@ -3,17 +3,17 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--malachite);
   padding: 1rem;
 }
 
 .login-card {
   background: white;
-  border-radius: 16px;
-  padding: 2.5rem;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
   width: 100%;
-  max-width: 450px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .login-header {
@@ -22,19 +22,21 @@
 }
 
 .login-logo {
-  color: #667eea;
+  color: var(--malachite);
   margin-bottom: 1rem;
 }
 
 .login-header h1 {
   font-size: 2rem;
   margin: 0.5rem 0;
-  color: #333;
+  color: var(--astronaut);
+  font-weight: 700;
 }
 
 .login-header p {
-  color: #666;
+  color: var(--regent-gray);
   margin: 0;
+  font-size: 0.95rem;
 }
 
 .login-form {
@@ -50,7 +52,7 @@
   padding: 0.75rem;
   background: #fee;
   border: 1px solid #fcc;
-  border-radius: 8px;
+  border-radius: 10px;
   color: #c33;
   font-size: 0.9rem;
 }
@@ -66,37 +68,42 @@
   align-items: center;
   gap: 0.5rem;
   font-weight: 600;
-  color: #333;
+  color: var(--shark);
+  font-size: 0.95rem;
 }
 
 .form-group input {
-  padding: 0.75rem;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  padding: 0.875rem;
+  border: 2px solid var(--gin);
+  border-radius: 12px;
   font-size: 1rem;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background: var(--gin);
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--malachite);
+  box-shadow: 0 0 0 3px rgba(21, 187, 33, 0.1);
+  background: white;
 }
 
 .login-button {
   padding: 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--malachite);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(21, 187, 33, 0.3);
 }
 
 .login-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 6px 16px rgba(21, 187, 33, 0.4);
 }
 
 .login-button:active {
@@ -106,12 +113,23 @@
 .login-hint {
   text-align: center;
   padding: 1rem;
-  background: #f5f5f5;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  color: #666;
+  background: var(--gin);
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: var(--regent-gray);
 }
 
 .login-hint strong {
-  color: #667eea;
+  color: var(--malachite);
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .login-header h1 {
+    font-size: 1.75rem;
+  }
 }
