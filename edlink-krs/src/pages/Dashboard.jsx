@@ -42,15 +42,7 @@ function Dashboard() {
   return (
     <div className="dashboard-mobile">
       <header className="dashboard-header">
-        <div className="profile-section">
-          <div className="profile-avatar">
-            <span>{username.charAt(0).toUpperCase()}</span>
-          </div>
-          <div className="profile-info">
-            <h2>{username.toUpperCase()}</h2>
-            <p>Mahasiswa - Pendidikan Teknologi</p>
-          </div>
-        </div>
+        <h1>Dashboard</h1>
         <div className="header-actions">
           <button className="icon-button">
             <Bell size={20} />
@@ -62,24 +54,50 @@ function Dashboard() {
       </header>
 
       <div className="dashboard-content">
+        <div className="student-info-card">
+          <div className="profile-avatar">
+            <span>{username.charAt(0).toUpperCase()}</span>
+          </div>
+          <div className="profile-info">
+            <h2>{username.toUpperCase()}</h2>
+            <p>Mahasiswa - Pendidikan Teknologi Informasi</p>
+            <div className="student-details">
+              <div className="detail-item">
+                <span className="detail-label">NIM</span>
+                <span className="detail-value">2021010123</span>
+              </div>
+              <div className="detail-item">
+                <span className="detail-label">Semester</span>
+                <span className="detail-value">5</span>
+              </div>
+              <div className="detail-item">
+                <span className="detail-label">IPK</span>
+                <span className="detail-value">3.75</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <section className="academic-section">
-          <h3 className="section-title">MyAcademic</h3>
-          <div className="menu-grid">
-            {menuItems.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={index}
-                  className="menu-item"
-                  onClick={() => navigate(item.path)}
-                >
-                  <div className="menu-icon" style={{ backgroundColor: item.color }}>
-                    <Icon size={24} color="white" />
+          <div className="academic-card">
+            <h3 className="section-title">MyAcademic</h3>
+            <div className="menu-grid">
+              {menuItems.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={index}
+                    className="menu-item"
+                    onClick={() => navigate(item.path)}
+                  >
+                    <div className="menu-icon" style={{ backgroundColor: item.color }}>
+                      <Icon size={24} color="white" />
+                    </div>
+                    <span className="menu-title">{item.title}</span>
                   </div>
-                  <span className="menu-title">{item.title}</span>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </section>
       </div>
