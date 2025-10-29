@@ -137,13 +137,27 @@ function PengisianKRS() {
     );
     
     let newSelections = [...selectedCourses];
+    let currentTotalSKS = getTotalSKS(newSelections);
     let successCount = 0;
     let failedCourses = [];
+    let sksLimitReached = false;
     
-    semester5Courses.forEach(course => {
+    for (const course of semester5Courses) {
+      // Cek apakah sudah mencapai batas SKS
+      if (currentTotalSKS >= maxSKS) {
+        sksLimitReached = true;
+        break;
+      }
+      
       // Cek apakah mata kuliah sudah dipilih
       const alreadySelected = newSelections.find(s => s.courseId === course.id);
-      if (alreadySelected) return;
+      if (alreadySelected) continue;
+      
+      // Cek apakah menambahkan mata kuliah ini akan melebihi batas SKS
+      if (currentTotalSKS + course.sks > maxSKS) {
+        failedCourses.push(course.nama);
+        continue;
+      }
       
       // Cari kelas yang tersedia (tidak penuh dan tidak bentrok)
       let selectedClass = null;
@@ -168,19 +182,22 @@ function PengisianKRS() {
           dosen: course.dosen,
           ...selectedClass
         });
+        currentTotalSKS += course.sks;
         successCount++;
       } else {
         failedCourses.push(course.nama);
       }
-    });
+    }
     
     setSelectedCourses(newSelections);
     setIsAutoSelecting(false);
     
     if (successCount > 0) {
-      let message = `Berhasil memilih ${successCount} mata kuliah semester 5 secara otomatis!`;
-      if (failedCourses.length > 0) {
-        message += ` ${failedCourses.length} mata kuliah tidak dapat dipilih (penuh/bentrok).`;
+      let message = `Berhasil memilih ${successCount} mata kuliah semester 5 (${currentTotalSKS} SKS)!`;
+      if (sksLimitReached) {
+        message += ' Batas SKS 24 telah tercapai.';
+      } else if (failedCourses.length > 0) {
+        message += ` ${failedCourses.length} mata kuliah tidak dapat dipilih (penuh/bentrok/melebihi batas SKS).`;
       }
       showNotification(message, 'success');
     } else {
