@@ -55,24 +55,44 @@ function Dashboard() {
 
       <div className="dashboard-content">
         <div className="student-info-card">
-          <div className="profile-avatar">
-            <span>{username.charAt(0).toUpperCase()}</span>
+          <div className="card-header-section">
+            <div className="profile-avatar">
+              <span>{username.charAt(0).toUpperCase()}</span>
+            </div>
+            <div className="profile-text">
+              <h2>{username.toUpperCase()}</h2>
+              <p>Pendidikan Teknologi Informasi</p>
+            </div>
           </div>
-          <div className="profile-info">
-            <h2>{username.toUpperCase()}</h2>
-            <p>Mahasiswa - Pendidikan Teknologi Informasi</p>
-            <div className="student-details">
-              <div className="detail-item">
-                <span className="detail-label">NIM</span>
-                <span className="detail-value">2021010123</span>
+          
+          <div className="student-stats">
+            <div className="stat-card">
+              <div className="stat-icon nim-icon">
+                <span>#</span>
               </div>
-              <div className="detail-item">
-                <span className="detail-label">Semester</span>
-                <span className="detail-value">5</span>
+              <div className="stat-info">
+                <span className="stat-label">NIM</span>
+                <span className="stat-value">2021010123</span>
               </div>
-              <div className="detail-item">
-                <span className="detail-label">IPK</span>
-                <span className="detail-value">3.75</span>
+            </div>
+            
+            <div className="stat-card">
+              <div className="stat-icon semester-icon">
+                <span>S</span>
+              </div>
+              <div className="stat-info">
+                <span className="stat-label">Semester</span>
+                <span className="stat-value">5</span>
+              </div>
+            </div>
+            
+            <div className="stat-card">
+              <div className="stat-icon ipk-icon">
+                <span>★</span>
+              </div>
+              <div className="stat-info">
+                <span className="stat-label">IPK</span>
+                <span className="stat-value">3.75</span>
               </div>
             </div>
           </div>
